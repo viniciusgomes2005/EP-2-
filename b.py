@@ -1,3 +1,4 @@
+from random import randint
 def define_posicoes(linha,coluna,orientacao,tamanho):
     posicao_ocupada=[]
     for y in range(tamanho):
@@ -195,9 +196,12 @@ while jogando:
     if coordenada not in ataques:
         ataques.append(coordenada)
         tabuleiro_oponente=faz_jogada(tabuleiro_oponente,linhaj,colunaj)
+        if afundados(frota_oponente, tabuleiro_oponente) ==10:
+            print('Parabéns! Você derrubou todos os navios do seu oponente!')
+            jogando=False
     else:
         while coordenada in ataques:
-            print('A posição linha LINHA e coluna COLUNA já foi informada anteriormente!')
+            print('A posição linha {0} e coluna {1} já foi informada anteriormente!').format(linhaj,colunaj)
             linhaj=input("Qual a linha?")
             while linhaj not in numeros:
                 print('Linha inválida!')
@@ -206,9 +210,13 @@ while jogando:
             while colunaj not in numeros:
                 print('Coluna inválida!')
                 colunaj=input("Qual a coluna?")
+            coordenada=[linhaj,colunaj]
             if coordenada not in ataques:
                 ataques.append(coordenada)
                 tabuleiro_oponente=faz_jogada(tabuleiro_oponente,linhaj,colunaj)
-    if afundados(frota_oponente, tabuleiro_oponente) ==10:
-        print('Parabéns! Você derrubou todos os navios do seu oponente!')
-        jogando=False
+                if afundados(frota_oponente, tabuleiro_oponente) ==10:
+                    print('Parabéns! Você derrubou todos os navios do seu oponente!')
+                    jogando=False
+    print(tabuleiro_jogador,tabuleiro_oponente)
+                    
+    
