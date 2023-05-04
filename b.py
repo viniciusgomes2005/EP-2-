@@ -166,3 +166,47 @@ frota_oponente = {
     ]
 }
 tabuleiro_oponente=posiciona_frota(frota_oponente)
+tabuleiro_jogador=posiciona_frota(frota)
+jogando=True
+ataques=[]
+while jogando:
+    def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
+        texto = ''
+        texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
+        texto += '_______________________________      _______________________________\n'
+
+        for linha in range(len(tabuleiro_jogador)):
+            jogador_info = '  '.join([str(item) for item in tabuleiro_jogador[linha]])
+            oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
+            texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
+        return texto
+    numeros="0123456789"
+    linhaj=input("Qual a linha?")    
+    while linhaj not in numeros:
+        print('Linha inválida!')
+        linhaj=input("Qual a linha?")
+    colunaj=input("Qual a coluna?")
+    while colunaj not in numeros:
+        print('Coluna inválida!')
+        colunaj=input("Qual a coluna?")
+    coordenada=[linhaj,colunaj]
+    if coordenada not in ataques:
+        ataques.append(coordenada)
+        tabuleiro_oponente=faz_jogada(tabuleiro_oponente,linhaj,colunaj)
+    else:
+        while coordenada in ataques:
+            print('A posição linha LINHA e coluna COLUNA já foi informada anteriormente!')
+            linhaj=input("Qual a linha?")
+            while linhaj not in numeros:
+                print('Linha inválida!')
+                linhaj=input("Qual a linha?")
+            colunaj=input("Qual a coluna?")
+            while colunaj not in numeros:
+                print('Coluna inválida!')
+                colunaj=input("Qual a coluna?")
+            if coordenada not in ataques:
+                ataques.append(coordenada)
+                tabuleiro_oponente=faz_jogada(tabuleiro_oponente,linhaj,colunaj)
+    if afundados(frota_oponente, tabuleiro_oponente) ==10:
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        jogando=False
