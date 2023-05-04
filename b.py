@@ -31,6 +31,8 @@ def preenche_frota(dic_frota,nome_navio,linha,coluna,orientacao, tamanho):
             variavel1.append(define_posicoes(linha,coluna,orientacao, tamanho))
     return dic_frota
 def faz_jogada(tabuleiro,linha,coluna):
+    linha=int(linha)
+    coluna=int(coluna)
     if tabuleiro[linha][coluna]==1:
         tabuleiro[linha][coluna]='X'
     else:
