@@ -200,7 +200,7 @@ while jogando:
             if cinimigo not in atkinimigo:
                 atkinimigo.append(cinimigo)
                 tabuleiro_jogador=faz_jogada(tabuleiro_jogador,linhai,colunai)
-                print('Seu oponente está atacando na linha LINHA e coluna COLUNA')
+                print('Seu oponente está atacando na linha {0} e coluna {1}').format(linhai,colunai)
                 if afundados(frota, tabuleiro_jogador) ==10:
                     print('Xi! O oponente derrubou toda a sua frota =(')
                     jogando=False
@@ -229,7 +229,7 @@ while jogando:
                     if cinimigo not in atkinimigo:
                         atkinimigo.append(cinimigo)
                         tabuleiro_jogador=faz_jogada(tabuleiro_jogador,linhai,colunai)
-                        print('Seu oponente está atacando na linha LINHA e coluna COLUNA')
+                        print('Seu oponente está atacando na linha {0} e coluna {1}').format(linhai,colunai)
                         if afundados(frota, tabuleiro_jogador) ==10:
                             print('Xi! O oponente derrubou toda a sua frota =(')
                             jogando=False
