@@ -1,3 +1,4 @@
+#EP2 dessoft
 from random import randint
 def define_posicoes(linha,coluna,orientacao,tamanho):
     posicao_ocupada=[]
